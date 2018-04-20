@@ -1,0 +1,42 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "jest": {
+    "setupTestFrameworkScriptFile": "./tests/setup.js"
+  },
+  "scripts": {
+    "start": "node index.js --verbose",
+    "server": "nodemon index.js --ignore tests --verbose",
+    "client": "npm run start --prefix client",
+    "redis": "start Redis/redis-server.exe",
+    "dev": "npm run redis && concurrently \"npm run server\" \"npm run client\"",
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "npm run build",
+    "update": "npm install --verbose && npm update --verbose && cd client && npm install --verbose && npm update --verbose",
+    "test": "jest --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.221.1",
+    "body-parser": "^1.17.2",
+    "concurrently": "^3.5.0",
+    "cookie-session": "^2.0.0-beta.2",
+    "express": "^4.16.3",
+    "jest": "^22.4.3",
+    "keygrip": "latest",
+    "migrate-mongoose": "^3.2.2",
+    "mongoose": "^4.13.12",
+    "nodemon": "^1.17.3",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0",
+    "path-parser": "^2.0.2",
+    "promise": "^8.0.1",
+    "puppeteer": "^1.2.0",
+    "redis": "^2.8.0",
+    "safe-buffer": "^5.1.1",
+    "uuid": "^3.2.1"
+  }
+}
